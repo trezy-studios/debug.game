@@ -34,9 +34,6 @@ export function HomePage() {
 			</Heading>
 
 			<div className={styles['description']}>
-		<Heading>
-			{'debug'}
-		</Heading>
 				<p>{'Take on the role of The Engineer and help The Debugger fix bugs in a complex system. Navigate challenging levels, inspired by Tetris and Sokoban, perfect for flexing your problem-solving skills. Unique storyline, retro graphics, and a relaxing soundtrack.'}</p>
 
 				<p>{'Coming soon to Steam, Epic Games, and Itch.'}</p>
