@@ -14,28 +14,8 @@ module.exports = {
 	redirects() {
 		return [
 			{
-				source: '/discord',
-				destination: 'https://discord.gg/QXaS8zk6mH',
-				permanent: false,
-			},
-			{
-				source: '/github',
-				destination: 'https://github.com/trezy-studios',
-				permanent: false,
-			},
-			{
 				source: '/itch',
 				destination: 'https://trezy.itch.io/debug',
-				permanent: false,
-			},
-			{
-				source: '/twitter',
-				destination: 'https://twitter.com/TrezyStudios',
-				permanent: false,
-			},
-			{
-				source: '/youtube',
-				destination: 'https://www.youtube.com/channel/',
 				permanent: false,
 			},
 		]

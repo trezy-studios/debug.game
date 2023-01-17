@@ -1,0 +1,34 @@
+.footer {
+	align-items: center;
+	bottom: 0;
+	display: flex;
+	justify-content: space-between;
+	padding: 2rem;
+	position: sticky;
+
+	small {
+		font-size: var(--font-size-small);
+	}
+}
+
+.social-links {
+	display: flex;
+	font-size: 3rem;
+	gap: 20px;
+
+	.discord:hover {
+		color: var(--palette-purple);
+	}
+
+	.itch:hover {
+		color: var(--palette-red);
+	}
+
+	.steam:hover {
+		color: var(--palette-light-grey);
+	}
+
+	.youtube:hover {
+		color: var(--palette-red);
+	}
+}

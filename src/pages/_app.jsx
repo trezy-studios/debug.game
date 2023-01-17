@@ -13,9 +13,12 @@ import {
 	event as trackEvent,
 	GoogleAnalytics,
 } from 'nextjs-google-analytics'
+import { DefaultSEO } from '../components/DefaultSEO.jsx'
 import { config as fontAwesomeConfig } from '@fortawesome/fontawesome-svg-core'
+import { Footer } from '../components/Footer/Footer.jsx'
 import NextHead from 'next/head.js'
 import PropTypes from 'prop-types'
+import { useAnimatedFavicon } from '../hooks/useAnimatedFavicon.js'
 import { useRouter } from 'next/router'
 
 
@@ -32,19 +35,31 @@ export default function App(props) {
 	} = props
 	const router = useRouter()
 
+	useAnimatedFavicon()
+
 	return (
 		<>
+			<DefaultSEO />
+
 			<GoogleAnalytics trackPageViews />
+
 			<NextHead>
 				<meta charSet={'utf-8'} />
 				<meta
 					content={'width=device-width, initial-scale=1, maximum-scale=1'}
 					name={'viewport'} />
+
+				<link
+					href={'/favicon.gif'}
+					rel={'icon'}
+					type={'image/gif'} />
 			</NextHead>
 
 			<Component
 				key={router.route}
 				{...pageProps} />
+
+			<Footer />
 		</>
 	)
 }
