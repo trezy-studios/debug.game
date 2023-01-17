@@ -13,7 +13,7 @@ import {
 	event as trackEvent,
 	GoogleAnalytics,
 } from 'nextjs-google-analytics'
-import { DefaultSEO } from '../components/DefaultSEO.jsx'
+import { DefaultSEO } from '../components/DefaultSEO/DefaultSEO.jsx'
 import { config as fontAwesomeConfig } from '@fortawesome/fontawesome-svg-core'
 import { Footer } from '../components/Footer/Footer.jsx'
 import NextHead from 'next/head.js'
