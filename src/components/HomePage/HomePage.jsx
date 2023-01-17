@@ -1,12 +1,4 @@
 // Module imports
-import {
-	faDiscord,
-	faGithub,
-	faItchIo,
-	faSteam,
-	faYoutube,
-} from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image.js'
 
 
@@ -17,7 +9,6 @@ import Image from 'next/image.js'
 import styles from './HomePage.module.scss'
 
 import { Heading } from '../Heading/Heading.jsx'
-import { Link } from '../Link/Link.jsx'
 import LogoImage from '../../../public/logo.png'
 import { PageContent } from '../PageContent/PageContent.jsx'
 import { PageSection } from '../PageSection/PageSection.jsx'
@@ -28,7 +19,7 @@ import { PageSection } from '../PageSection/PageSection.jsx'
 
 export function HomePage() {
 	return (
-		<PageContent>
+		<PageContent title={'Home'}>
 			<PageSection>
 				<Heading>
 					<Image
