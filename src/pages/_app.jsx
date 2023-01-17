@@ -35,7 +35,10 @@ export default function App(props) {
 	} = props
 	const router = useRouter()
 
-	useAnimatedFavicon()
+	useAnimatedFavicon({
+		imageURL: '/favicon-spritesheet.png',
+		frameCount: 4,
+	})
 
 	return (
 		<>

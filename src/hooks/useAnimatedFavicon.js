@@ -9,15 +9,23 @@ import {
 
 
 
+/**
+ * Renders a spritesheet into the favicon!
+ *
+ * @param {object} options All options.
+ * @param {number} options.frameCount How many frames are in your animation.
+ * @param {number} [options.frameRate = 100] The frame rate (in milliseconds) at which the sprite will be rendered.
+ * @param {number} options.imageURL URL for the favicon spritesheet.
+ * @param {'horizontal' | 'vertical'} [options.spritesheetDirection = 'horizontal'] Whether the spritesheet is a horizontal or vertical strip.
+*/
+export function useAnimatedFavicon(options) {
+	const {
+		frameCount,
+		frameRate = 100,
+		imageURL,
+		spritesheetDirection = 'horizontal',
+	} = options
 
-// Constants
-const FRAME_COUNT = 4
-
-
-
-
-
-export function useAnimatedFavicon() {
 	const canvasRef = useRef(null)
 	const currentFrameRef = useRef(0)
 	const imageRef = useRef(null)
@@ -54,10 +62,13 @@ export function useAnimatedFavicon() {
 
 		context.clearRect(0, 0, canvasElement.width, canvasElement.height)
 
+		const sourceX = (spritesheetDirection === 'horizontal') ? currentFrame * canvasElement.width : 0
+		const sourceY = (spritesheetDirection === 'vertical') ? currentFrame * canvasElement.height : 0
+
 		context.drawImage(
 			imageElement,
-			currentFrame * canvasElement.width,
-			0,
+			sourceX,
+			sourceY,
 			canvasElement.width,
 			canvasElement.height,
 			0,
@@ -68,7 +79,7 @@ export function useAnimatedFavicon() {
 
 		currentFrameRef.current += 1
 
-		if (currentFrameRef.current > (FRAME_COUNT - 1)) {
+		if (currentFrameRef.current > (frameCount - 1)) {
 			currentFrameRef.current = 0
 		}
 
@@ -78,7 +89,7 @@ export function useAnimatedFavicon() {
 	}, [isImageLoaded])
 
 	useEffect(() => {
-		setInterval(updateCanvas, 100)
+		setInterval(updateCanvas, frameRate)
 	}, [
 		isImageLoaded,
 		updateCanvas,
@@ -91,9 +102,12 @@ export function useAnimatedFavicon() {
 			return
 		}
 
-		imageElement.src = '/favicon-spritesheet.png'
+		imageElement.src = imageURL
 		imageElement
 			.decode()
 			.then(() => setIsImageLoaded(true))
-	}, [setIsImageLoaded])
+	}, [
+		imageURL,
+		setIsImageLoaded,
+	])
 }
