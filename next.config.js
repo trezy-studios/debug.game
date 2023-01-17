@@ -15,7 +15,7 @@ module.exports = {
 		return [
 			{
 				source: '/itch',
-				destination: 'https://trezy.itch.io/debug',
+				destination: 'https://trezy-studios.itch.io/debug',
 				permanent: false,
 			},
 		]
