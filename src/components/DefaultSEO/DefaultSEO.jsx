@@ -36,11 +36,6 @@ const JSON_LD = {
 	],
 	accessibilitySummary: 'Users can change fonts, font sizes, and interface colors to improve readability. They can also apply filters to improve readability if the player suffers from color vision deficiency (colorblindness).',
 	accessMode: 'visual',
-	aggregateRating: {
-		'@type': 'AggregateRating',
-		ratingValue: '4.6',
-		ratingCount: '8864',
-	},
 	applicationCategory: [
 		'GameApplication',
 		'MultimediaApplication',
