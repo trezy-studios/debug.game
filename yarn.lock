@@ -428,6 +428,7 @@ __metadata:
     "@fortawesome/react-fontawesome": ^0.2.0
     classnames: ^2.3.2
     next: ^13.1.2
+    nextjs-google-analytics: ^2.2.2
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -516,7 +517,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@npm:~2.3.2":
+"fsevents@npm:^2.3.2, fsevents@npm:~2.3.2":
   version: 2.3.2
   resolution: "fsevents@npm:2.3.2"
   dependencies:
@@ -526,7 +527,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
+"fsevents@patch:fsevents@^2.3.2#~builtin<compat/fsevents>, fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
   resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
   dependencies:
@@ -1011,6 +1012,21 @@ __metadata:
   bin:
     next: dist/bin/next
   checksum: bc9aedfc70b979bb33a2190adca3719f8b0012d345a1bc44a6efac320ff599de1e39ade7ba7bae8e5f0d57ebcffb8c4ecc8b7da55565be6a59574896568f0685
+  languageName: node
+  linkType: hard
+
+"nextjs-google-analytics@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "nextjs-google-analytics@npm:2.2.2"
+  dependencies:
+    fsevents: ^2.3.2
+  peerDependencies:
+    next: ">=11.0.0"
+    react: ">=17.0.0"
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  checksum: 24626c351bff3fafd172a5b4c6f1a6b7a81c14362aecf2f53457bcf43abe0895e87e7bfced54d976600e343e7e481d47a9f77c4b49bf5a333e6d45641c20bce8
   languageName: node
   linkType: hard
 

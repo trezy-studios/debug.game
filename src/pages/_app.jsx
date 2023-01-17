@@ -9,6 +9,10 @@ import '../styles/app.scss'
 
 
 // Module imports
+import {
+	event as trackEvent,
+	GoogleAnalytics,
+} from 'nextjs-google-analytics'
 import { config as fontAwesomeConfig } from '@fortawesome/fontawesome-svg-core'
 import NextHead from 'next/head.js'
 import PropTypes from 'prop-types'
@@ -30,6 +34,7 @@ export default function App(props) {
 
 	return (
 		<>
+			<GoogleAnalytics trackPageViews />
 			<NextHead>
 				<meta charSet={'utf-8'} />
 				<meta
@@ -54,4 +59,13 @@ App.propTypes = {
 		PropTypes.node,
 	]).isRequired,
 	pageProps: PropTypes.object,
+}
+
+export function reportWebVitals({ id, name, label, value }) {
+	trackEvent(name, {
+		category: (label === 'web-vital') ? 'Web Vitals' : 'Next.js custom metric',
+		value: Math.round((name === 'CLS') ? (value * 1000) : value),
+		label: id,
+		nonInteraction: true,
+	})
 }
