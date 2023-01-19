@@ -38,30 +38,6 @@ export function Footer() {
 
 			<div className={styles['social-links']}>
 				<Link
-					className={styles['discord']}
-					href={'https://trezy.studio/discord'}>
-					<FontAwesomeIcon
-						fixedWidth
-						icon={faDiscord} />
-				</Link>
-
-				<Link
-					className={styles['twitter']}
-					href={'https://trezy.studio/twitter'}>
-					<FontAwesomeIcon
-						fixedWidth
-						icon={faTwitter} />
-				</Link>
-
-				<Link
-					className={styles['youtube']}
-					href={'https://trezy.studio/youtube'}>
-					<FontAwesomeIcon
-						fixedWidth
-						icon={faYoutube} />
-				</Link>
-
-				<Link
 					className={styles['steam']}
 					href={'/steam'}>
 					<FontAwesomeIcon
@@ -83,6 +59,30 @@ export function Footer() {
 					<FontAwesomeIcon
 						fixedWidth
 						icon={faItchIo} />
+				</Link>
+
+				<Link
+					className={styles['discord']}
+					href={'https://trezy.studio/discord'}>
+					<FontAwesomeIcon
+						fixedWidth
+						icon={faDiscord} />
+				</Link>
+
+				<Link
+					className={styles['twitter']}
+					href={'https://trezy.studio/twitter'}>
+					<FontAwesomeIcon
+						fixedWidth
+						icon={faTwitter} />
+				</Link>
+
+				<Link
+					className={styles['youtube']}
+					href={'https://trezy.studio/youtube'}>
+					<FontAwesomeIcon
+						fixedWidth
+						icon={faYoutube} />
 				</Link>
 			</div>
 		</footer>
