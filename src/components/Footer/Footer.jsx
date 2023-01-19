@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // Local imports
 import styles from './Footer.module.scss'
 
+import { faHumbleBundle } from '../../icons/faHumbleBundle.js'
 import { Link } from '../Link/Link.jsx'
 
 
@@ -69,19 +70,19 @@ export function Footer() {
 				</Link>
 
 				<Link
+					className={styles['humble-bundle']}
+					href={'/humble-bundle'}>
+					<FontAwesomeIcon
+						fixedWidth
+						icon={faHumbleBundle} />
+				</Link>
+
+				<Link
 					className={styles['itch']}
 					href={'/itch'}>
 					<FontAwesomeIcon
 						fixedWidth
 						icon={faItchIo} />
-				</Link>
-
-				<Link
-					className={styles['github']}
-					href={'https://trezy.studio/github'}>
-					<FontAwesomeIcon
-						fixedWidth
-						icon={faGithub} />
 				</Link>
 			</div>
 		</footer>
