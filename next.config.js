@@ -14,8 +14,18 @@ module.exports = {
 	redirects() {
 		return [
 			{
+				source: '/humble-bundle',
+				destination: 'https://humblebundle.com/g/debug',
+				permanent: false,
+			},
+			{
 				source: '/itch',
 				destination: 'https://trezy-studios.itch.io/debug',
+				permanent: false,
+			},
+			{
+				source: '/steam',
+				destination: 'https://store.steampowered.com/app/2289600/Debug',
 				permanent: false,
 			},
 		]
