@@ -16,6 +16,10 @@
 	font-size: 3rem;
 	gap: 20px;
 
+	.bsky:hover {
+		color: var(--palette-bsky-blue);
+	}
+
 	.discord:hover {
 		color: var(--palette-purple);
 	}

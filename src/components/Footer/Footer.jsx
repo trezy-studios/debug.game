@@ -1,12 +1,11 @@
 // Module imports
 import {
 	faDiscord,
-	faGithub,
 	faItchIo,
 	faSteam,
-	faTwitter,
 	faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
+import { faCloud } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
@@ -70,11 +69,11 @@ export function Footer() {
 				</Link>
 
 				<Link
-					className={styles['twitter']}
-					href={'https://trezy.studio/twitter'}>
+					className={styles['bsky']}
+					href={'https://staging.bsky.app/profile/trezy.codes'}>
 					<FontAwesomeIcon
 						fixedWidth
-						icon={faTwitter} />
+						icon={faCloud} />
 				</Link>
 
 				<Link
