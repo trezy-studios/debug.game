@@ -16,25 +16,3 @@
 	line-height: 1.5;
 	padding: 5rem;
 }
-
-.social-links {
-	display: flex;
-	font-size: 3rem;
-	gap: 20px;
-
-	.discord:hover {
-		color: var(--palette-purple);
-	}
-
-	.itch:hover {
-		color: var(--palette-red);
-	}
-
-	.steam:hover {
-		color: var(--palette-light-grey);
-	}
-
-	.youtube:hover {
-		color: var(--palette-red);
-	}
-}
