@@ -33,6 +33,7 @@ import { ExternalLink } from '../ExternalLink/ExternalLink.jsx'
  * @param {boolean} [props.isButton=false] Whether or not this component should look like a button.
  * @param {boolean} [props.isLink=false] Whether or not this link should look like a link (only valid if `isButton` is true).
  * @param {boolean} [props.isPrimary=false] Whether or not this link is used for a primary action (only valid if `isButton` is true).
+ * @param {string} [props.title] The title to display when hovering over the link.
  * @param {string} props.href The URL to which this link leads.
  */
 export function Link(props) {
@@ -44,6 +45,7 @@ export function Link(props) {
 		isButton,
 		isLink,
 		isPrimary,
+		title,
 	} = props
 
 	const compiledClassName = useMemo(() => {
@@ -66,7 +68,8 @@ export function Link(props) {
 		return (
 			<ExternalLink
 				className={compiledClassName}
-				href={href}>
+				href={href}
+				title={title}>
 				{children}
 			</ExternalLink>
 		)
@@ -75,7 +78,8 @@ export function Link(props) {
 	return (
 		<NextLink
 			className={compiledClassName}
-			href={href}>
+			href={href}
+			title={title}>
 			{children}
 		</NextLink>
 	)
@@ -88,6 +92,7 @@ Link.defaultProps = {
 	isButton: false,
 	isLink: false,
 	isPrimary: false,
+	title: '',
 }
 
 Link.propTypes = {
@@ -98,4 +103,5 @@ Link.propTypes = {
 	isButton: PropTypes.bool,
 	isLink: PropTypes.bool,
 	isPrimary: PropTypes.bool,
+	title: PropTypes.string,
 }
