@@ -24,6 +24,7 @@ export function HomePage() {
 				<Heading>
 					<Image
 						alt={'debug'}
+						placeholder={'blur'}
 						src={LogoImage} />
 				</Heading>
 

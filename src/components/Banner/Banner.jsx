@@ -75,6 +75,7 @@ export function Banner() {
 			<div className={styles['brand']}>
 				<Image
 					alt={'Debug logo'}
+					placeholder={'blur'}
 					priority
 					src={LogoImage}
 					width={200} />

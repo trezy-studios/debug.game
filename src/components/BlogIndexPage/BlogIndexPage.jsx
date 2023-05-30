@@ -50,6 +50,7 @@ function mapArticle(article, index) {
 				<Image
 					alt={''}
 					fill
+					placeholder={'blur'}
 					src={article.image} />
 			</div>
 
