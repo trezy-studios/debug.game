@@ -14,8 +14,6 @@ import GameEngineImage from '../../../public/blog/images/how-its-made/game-engin
 	title={'How It\'s Made'}>
 	Since I've gotten a lot of questions about what Debug is built with, I figured I may as well write an article about it! I'll be covering not just which tech I\'m using to build Debug, but also _why_ I chose the tools I did. If you've got further questions, make sure to join our [Discord](/discord)!
 
-	### Choosing a Language
-
 	<div
 		className={styles['pull-left']}
 		style={{
@@ -36,13 +34,17 @@ import GameEngineImage from '../../../public/blog/images/how-its-made/game-engin
 			src={ProgrammerImage} />
 	</div>
 
+	### Choosing a Language
+
 	When we built the [original version](https://classic.debug.game) of Debug, it was for the [js13k](https://js13kgames.com/) game jam where teams have a month to build a game using JavaScript and other web tech. The catch is that the final bundle — JavaScript, HTML, and CSS — must be **less than 13kb**.
 
-	So then when I decided to start from scratch and rebuild the game from scratch, building with JavaScript was a no-brainer. That said, I had a few new goals which would be challenging to address with JavaScript.
+	Between that and my 2 decades of writing JavaScript, building with JavaScript was a no-brainer when I decided to start from scratch and rebuild the game from scratch.
 
-	* **Publish to platforms like Steam and Epic,** whose revenue potential overshadows any platform that publishes web games.
-	* **Store custom maps on the local machine,** Which is difficult since JavaScript doesn't have direct filesystem access from the browser.
-	* **Give users fine-grained control over the game's settings**, which is often challenging to implement in JavaScript due to the sandboxed environment.
+	That said, I had a few goals for the game's reimagining that would be challenging to address with a JavaScript app. Some of the things I wanted to be able to do included...
+
+	* **Publishing to platforms like Steam and Epic,** whose revenue potential overshadows any platform that publishes web games.
+	* **Storing custom maps on the local machine,** which is difficult since JavaScript doesn't have direct filesystem access from the browser.
+	* **Giving users fine-grained control over game settings,** which is often challenging to implement in the sandboxed JavaScript environment.
 
 	That leads me into the first piece of the tech stack...
 
@@ -70,17 +72,17 @@ import GameEngineImage from '../../../public/blog/images/how-its-made/game-engin
 	</div>
 
 	### JavaScript on the Desktop
-	Most games are using engines like Unity, Unreal, or Godot to build for the desktop (or aging custom engines at a lot of AAA studios, but that's a whole different article). There are a couple of JavaScript engines that can compile for multiple platforms — such as [Construct 3](https://www.construct.net) and [Impact.js](https://impactjs.com) — but I wanted the freedom to choose what technologies I used to build every aspect of the game.
+	Most games are using engines like Unity, Unreal, or Godot to build for the desktop. A lot of AAA studios even have their own custom engines, but that's an entirely different article. There are a couple of JavaScript engines that can compile for multiple platforms — such as [Construct 3](https://www.construct.net) and [Impact.js](https://impactjs.com) — but I wanted the freedom to choose what technologies I used to build every aspect of the game.
 
-	To that end, I decided to go with [Electron.js](https://electronjs.org 'foobar') for publishing on desktop. It's a powerful desktop framework built on the Chromium binary, allowing a web app to be married to Node APIs for extremely powerful JavaScript-backed apps. It actually solves all 3 of the goals I listed in the previous section.
+	To that end, I decided to go with [Electron.js](https://electronjs.org) for publishing on desktop. It's a powerful desktop framework built on the Chromium binary, allowing a web app to be married to [Node.js](https://nodejs.org) APIs for extremely powerful JavaScript-backed apps. It actually solves all 3 of the goals I listed in the previous section.
 
-	I did review a couple other options, as well...
+	While I ultimately settled on Electron, I did review a couple other options...
 
-	1. **[NW.js](https://nwjs.io/):** While NW.js was around before Electron, Electron's development ecosystem is much more robust. Solving issues with Electron is also easier, just because it has a larger userbase with more content written about it.
-	1. **[Tauri](https://tauri.app/) or [Neutralino](https://neutralino.js.org/):** Tauri and Neutralino are really interesting. They're written in Rust and C (respectively), so the overhead of building with them is minimal and apps tend to be very zoom zoom. That said, they also use the native OS WebView. That's fine, but it means you have to deal with browser inconsistencies (Edge on Windows, Safari on macOS, etc). Electron bundles Chromium with it, so you can focus on building for the same web environment regardless of OS.
+	1. **[NW.js](https://nwjs.io/) has been around since before Electron was released,** but Electron's development ecosystem is much more robust. Solving issues with Electron is generally easier just because it has a larger userbase with more content written about it.
+	1. **[Tauri](https://tauri.app/) and [Neutralino](https://neutralino.js.org/) are really interesting as well.** They're written in Rust and C (respectively), so the overhead of building with them is minimal and apps tend to be very zoom zoom. That said, they also use the native OS WebView. That's fine, but it means you have to deal with browser inconsistencies (Edge on Windows, Safari on macOS, etc). Electron bundles its own Chromium with each build, so you can focus on building for the same web environment regardless of OS.
 
 	### UI Is UwU
-	The first thing any user encounters when playing a game is UI. Loading screens, menus, settings, it's all UI. The web is brilliantly suited for building UI, so I that's where I really started the development journey. I'm using [React.js](https://react.dev) for managing UI rendering and interaction. While there are lots of other frontend frameworks I _could_ use, React is easily the most mature of them with the most broad ecosystem.
+	The first thing any user encounters when playing a game is UI. Loading screens, menus, settings... it's all UI. The web is brilliantly suited for building UI, so that's where I really started the development journey. I'm using [React.js](https://react.dev) for managing UI rendering and interaction. While there are lots of other frontend frameworks I _could_ use, React is the most mature of them with the largest ecosystem.
 
 	I'm also using [Framer Motion](https://framer.com/motion/) to animate all of the panels and buttons that slide in and out of view, adding a lot of life to the UI.
 
@@ -93,27 +95,27 @@ import GameEngineImage from '../../../public/blog/images/how-its-made/game-engin
 	</div>
 
 	### Game Engines, Shmame Shmengines
-	While there are lots of game engines built for JavaScript, they all felt much heavier than necessary for Debug. A renderer, pathfinding, and input capture were the primary requirements for Debug. Everything else would be extra.
+	There are several game engines built for JavaScript, but they all feel heavier than necessary for Debug. A renderer, pathfinding, and input capture were the primary requirements; everything else the engine provides is cruft.
 
-	We can get away with ditching a lot of typical game engine needs since we only have 1 character, and the whole game is 2D. Instead of using something off-the-shelf, I decided to build everything from scratch. This was ~~probably~~ definitely a bad choice, but I've been enjoying myself anyway. 😅
+	We can get away with ditching a lot of typical game engine needs since we only have 1 character. The whole game is 2D, so there's no need for any fancy 3D tooling. I don't even need a physics engine. Instead of using something off-the-shelf, I decided to build everything from scratch. This was <s>probably</s> definitely a bad choice, but I've been enjoying myself anyway. 😅
 
 	#### Rendering
-	For rendering, I started out by building a custom renderer based on the one we'd built for the original version of the game. It was super simple, but it solved a lot of traditional rendering challenges in novel ways.
+	For rendering, I started out by building a custom renderer based on the one we'd built for the original version of the game. It was simple, but it solved a lot of traditional rendering challenges in novel ways.
 
-	The renderer was relatively slow since it used Canvas2D, and it had become a convoluted mess, making it hard to work with. I recently decided that rather than continuing down this path, I should shift gears and replace the old renderer with [Pixi.js](https://pixijs.io). It's been a dream so far. Pixi uses WebGL by default, which provides significant performance benefits over Canvas3D. 🤩
+	Unfortunately it used Canvas2D which is quite slow, and it had become impossible to work with due to being a convoluted mess. I recently decided that rather than continuing down this path, I should shift gears and replace the old renderer with [Pixi.js](https://pixijs.io). It's been a dream so far. Pixi uses WebGL by default, which provides significant performance benefits over Canvas2D. 🤩
 
 	#### Pathfinding
-	Pathfinding is the most core mechanic in Debug, so it's a pretty important aspect of the development cycle. I started out using an outdated JavaScript pathfinding implementation, but a couple months ago I ripped that out and replaced it with the amazing [`ngraph`](https://github.com/anvaka/ngraph) library.  `ngraph` allows us to handle pathfinding _much_ more efficiently.
+	Pathfinding is the core of everything in Debug, so to call it important would be an understatement. I started out using an outdated JavaScript pathfinding implementation, but a couple of months ago I ripped that out and replaced it with the amazing [`ngraph`](https://github.com/anvaka/ngraph) library. `ngraph` handles pathfinding _much_ more efficiently.
 
-	`ngraph` is probably even worth its own article. I even used it to implement really effective UI navigation for gamepads. 👀
+	As an aside, I'm also using `ngraph` for a really awesome UI navigation experience when using a gamepad. I may write an article on it at some point. 👀
 
 	#### Input Capture
-	I'm still handling this one manually. I'm currently using the JS Gamepad API to handle controllers, and I've implemented a similar rollable system for tracking keyboard keys and mouse movement/clicks.
+	I'm still handling this one manually. I'm currently using the JS Gamepad API to handle controllers, and I've implemented a similar system for tracking keyboard keys and mouse movement/clicks.
 
 	### State Management
-	Since the UI and the game engine need to share a fair amount of data, the state management decision was vital. It had to be fast, and it had to be simple. In the past I've invested a lot into learning and using libraries like Redux and MobX, but they're incredibly heavy and they get in the way of development _a lot._ I switched to using Zustand for a lot of projects in 2022, but even Zustand's relatively simple APIs provide enough footguns that it was slowing down development.
+	Since the UI and the game engine need to share a fair amount of data, the state management decision was vital. It had to be fast, and it had to be simple. In the past I've invested a lot into learning and using libraries like [Redux](https://redux.js.org/) and [MobX](https://mobx.js.org/), but they're incredibly heavy and they get in the way of development _a lot._ I switched to using [Zustand](https://zustand-demo.pmnd.rs/) for a lot of projects in 2022, but even Zustand's relatively simple APIs provide enough footguns that it was slowing down my development.
 
-	Earlier this year I discovered [Statery](https://github.com/hmans/statery), made by the inimitable [Hendrik Mans](https://hmans.dev). Statery provides _exactly_ the right amount of control for usage across different control paradigms. It's incredibly simple, but it still makes it pretty hard to shoot yourself in the foot.
+	Earlier this year I discovered [Statery](https://github.com/hmans/statery), made by the inimitable [Hendrik Mans](https://hmans.dev). Statery provides _exactly_ the right amount of control for usage across different control paradigms. It's simple, but its simplicity actually makes it difficult to shoot yourself in the foot.
 
 	<div
 		className={styles['pull-right']}
@@ -144,11 +146,11 @@ import GameEngineImage from '../../../public/blog/images/how-its-made/game-engin
 
 	### Wrapping It Up
 
-	There you have it - a behind–the–scenes look into the tech stack that makes Debug tick. From JavaScript as our language of choice, Electron for desktop publishing, React and Framer Motion for creating the UI, to Pixi, ngraph, and handcrafted systems for game mechanics, and finally, Statery for state management.
+	There you have it - a behind–the–scenes look into the tech stack that makes Debug tick. From JavaScript as the language of choice, Electron for desktop publishing, React and Framer Motion for creating the UI, to Pixi, ngraph, and handcrafted systems for the game mechanics, and finally, Statery for state management.
 
-	Every tool and technology was chosen with care, each one playing a crucial part in building the game. It's been a journey of learning, experimenting, and sometimes, just trial and error. But that's what game development often looks like, especially when you're committed to delivering the best possible experience for your players.
+	Every piece of the stack has been chosen with care, each one playing a critical role in building the game. It's been a journey of learning, experimenting, and often just trial and error. But that seems to be what game development often looks like, especially when basically none of us have any idea hwat we're doing. 😅
 
-	Keep in mind: this absolutely is not the right tech stack for every game. That said, it works remarkably well for Debug. The technology choices we've made have allowed us to meet our goals and overcome all of the challenges we've encountered so far. And remember, at the end of the day, the best tools are the ones that enable you to bring your vision to life.
+	Keep in mind: this absolutely is not the right tech stack for every game. That said, it's been a dream to use for building Debug. The technology choices I've made have allowed me to meet a lot of goals while overcoming all of the challenges I've encountered so far. And remember, at the end of the day, the best tools are the ones that enable you to bring your vision to life.
 
-	If you have further questions or want to discuss any of these topics in more detail, make sure to join our [Discord](/discord). Thanks for taking the time to read about how Debug is made. Stay tuned for more insights and updates as we continue to develop and enhance the game.
+	If you have further questions or want to discuss any of these topics in more detail, make sure to join our [Discord](/discord)! Thanks for taking the time to read about how Debug is made. Stay tuned for more insights and updates as I continue to develop and enhance the game. ❤️
 </BlogArticlePage>
