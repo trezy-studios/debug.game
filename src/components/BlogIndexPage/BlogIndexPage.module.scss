@@ -1,0 +1,151 @@
+.article {
+	align-content: stretch;
+	align-items: stretch;
+	background-color: hsla(var(--palette-dark-grey-hsl), 0.3);
+	display: grid;
+	gap: 2rem;
+	grid-template-areas:
+		'heading call-to-action'
+		'summary call-to-action';
+	grid-template-columns: 1fr auto;
+	outline-color: var(--palette-orange);
+	outline-style: solid;
+	outline-width: 0;
+	padding: 2rem;
+	position: relative;
+	text-decoration: none;
+	transition-duration: 0.1s;
+	transition-property: outline-width;
+
+	.call-to-action,
+	.heading h2,
+	.heading time,
+	.summary p {
+		background-color: var(--palette-black);
+		color: var(--palette-white);
+		position: relative;
+		transition-duration: 0.1s;
+		transition-property: background-color;
+	}
+
+	.call-to-action {
+		align-items: center;
+		display: flex;
+		grid-area: call-to-action;
+		justify-content: center;
+		margin: -1rem;
+		margin-left: 0;
+		padding: 4rem;
+	}
+
+	.heading,
+	.summary {
+		display: flex;
+	}
+
+	.heading h2,
+	.summary p {
+		background-color: var(--palette-black);
+		padding: 2rem;
+	}
+
+	.heading {
+		align-items: start;
+		display: flex;
+		flex-direction: column;
+		grid-area: heading;
+		padding-bottom: 0;
+
+		h2 {
+			display: flex;
+			line-height: 1.3;
+			margin-top: 1rem;
+		}
+
+		time {
+			display: flex;
+			font-size: 0.8em;
+			margin-top: -2rem;
+			padding: 0 2rem 1rem;
+		}
+	}
+
+	.image {
+		inset: 0;
+		position: absolute;
+
+		&:after {
+			background-color: hsla(var(--palette-pure-black-hsl), 0.5);
+			content: '';
+			inset: 0;
+			position: absolute;
+		}
+
+		img {
+			object-fit: cover;
+		}
+	}
+
+	.summary {
+		grid-area: summary;
+		padding-top: 0;
+	}
+
+	&:hover {
+		outline-width: 0.5rem;
+		transform: none;
+
+		.call-to-action,
+		.heading h2,
+		.heading time,
+		.summary p {
+			background-color: var(--palette-orange);
+		}
+	}
+}
+
+.blogroll {
+	display: grid;
+	column-gap: 2rem;
+	row-gap: 5rem;
+
+	@media (min-width: 1500px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.page-content {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	line-height: 1.5;
+	padding: 5rem;
+}
+
+.page-section {
+	align-items: stretch;
+	margin: 0;
+}
+
+.social-links {
+	display: flex;
+	font-size: 3rem;
+	gap: 20px;
+
+	.discord:hover {
+		color: var(--palette-purple);
+	}
+
+	.itch:hover {
+		color: var(--palette-red);
+	}
+
+	.steam:hover {
+		color: var(--palette-light-grey);
+	}
+
+	.youtube:hover {
+		color: var(--palette-red);
+	}
+}

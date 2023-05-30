@@ -36,6 +36,10 @@
 				background-color,
 				color;
 
+			&.is-active {
+				background-color: var(--palette-orange);
+			}
+
 			&:hover {
 				background-color: var(--palette-white);
 				color: var(--palette-black);
