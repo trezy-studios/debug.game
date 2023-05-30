@@ -25,33 +25,45 @@
 		}
 	}
 
-	p {
-		text-wrap: balance;
-	}
-
 	ol,
 	ul {
 		list-style-type: square;
+	}
+
+	.pull-left,
+	.pull-right {
+		--pull-size: 40rem;
+
+		height: var(--pull-size);
+		position: relative;
+		width: var(--pull-size);
+
+		img {
+			object-fit: contain;
+		}
+
+		@media (max-width: 1000px) {
+			--pull-size: 20rem;
+		}
 	}
 
 	.pull-left {
 		display: flex;
 		float: left;
 		margin: 2rem;
-		margin-left: -20rem;
+		margin-left: calc((var(--pull-size) / 2) * -1);
 	}
 
 	.pull-right {
 		display: flex;
 		float: right;
 		margin: 2rem;
-		margin-right: -20rem;
+		margin-right: calc((var(--pull-size) / 2) * -1);
 	}
 }
 
 .page-section {
 	gap: 0 !important;
-	min-width: 60rem;
 	max-width: 80ch;
 
 	> * {

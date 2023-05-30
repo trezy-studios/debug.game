@@ -38,11 +38,12 @@ const timeFormatter = new Intl.DateTimeFormat('en-US', { timeStyle: 'short' })
 
 
 
-function mapArticle(article) {
+function mapArticle(article, index) {
 	const publishedAt = new Date(article.publishedAt)
 
 	return (
 		<Link
+			key={index}
 			className={styles['article']}
 			href={article.path}>
 			<div className={styles['image']}>

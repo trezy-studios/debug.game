@@ -46,13 +46,14 @@ const links = [
 export function Banner() {
 	const Router = useRouter()
 
-	const mapLink = useCallback(link => {
+	const mapLink = useCallback((link, index) => {
 		const compiledClassName = classnames({
 			[styles['is-active']]: link.path === Router.asPath,
 		})
 
 		return (
 			<Link
+				key={index}
 				className={compiledClassName}
 				href={link.path}>
 				<FontAwesomeIcon

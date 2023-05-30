@@ -50,7 +50,7 @@
 	}
 
 	.heading {
-		align-items: start;
+		align-items: flex-start;
 		display: flex;
 		flex-direction: column;
 		grid-area: heading;
@@ -58,7 +58,6 @@
 
 		h2 {
 			display: flex;
-			line-height: 1.3;
 			margin-top: 1rem;
 		}
 
@@ -126,6 +125,7 @@
 .page-section {
 	align-items: stretch;
 	margin: 0;
+	width: auto;
 }
 
 .social-links {
