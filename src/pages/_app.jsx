@@ -1,25 +1,30 @@
 /* eslint-env node */
-// Style imports
-import '../styles/reset.scss'
-import '../styles/lib.scss'
-import '../styles/app.scss'
-
-
-
-
 
 // Module imports
 import {
 	event as trackEvent,
 	GoogleAnalytics,
 } from 'nextjs-google-analytics'
-import { DefaultSEO } from '../components/DefaultSEO/DefaultSEO.jsx'
 import { config as fontAwesomeConfig } from '@fortawesome/fontawesome-svg-core'
-import { Footer } from '../components/Footer/Footer.jsx'
 import NextHead from 'next/head.js'
+import { MDXProvider } from '@mdx-js/react'
 import PropTypes from 'prop-types'
-import { useAnimatedFavicon } from '../hooks/useAnimatedFavicon.js'
 import { useRouter } from 'next/router'
+
+
+
+
+
+// Local imports
+import '../styles/reset.scss'
+import '../styles/lib.scss'
+import '../styles/app.scss'
+
+import { Banner } from '../components/Banner/Banner.jsx'
+import { DefaultSEO } from '../components/DefaultSEO/DefaultSEO.jsx'
+import { Footer } from '../components/Footer/Footer.jsx'
+import { MDXComponents } from '../components/MDXComponents.jsx'
+import { useAnimatedFavicon } from '../hooks/useAnimatedFavicon.js'
 
 
 
@@ -41,7 +46,7 @@ export default function App(props) {
 	})
 
 	return (
-		<>
+		<MDXProvider components={MDXComponents}>
 			<DefaultSEO />
 
 			<GoogleAnalytics
@@ -60,12 +65,14 @@ export default function App(props) {
 					type={'image/gif'} />
 			</NextHead>
 
+			<Banner />
+
 			<Component
 				key={router.route}
 				{...pageProps} />
 
 			<Footer />
-		</>
+		</MDXProvider>
 	)
 }
 

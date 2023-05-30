@@ -1,0 +1,60 @@
+.body {
+	margin-top: 5rem;
+
+	a {
+		color: var(--palette-blue);
+
+		&:hover {
+			color: var(--palette-light-blue);
+		}
+	}
+
+	> *:not(:first-child) {
+		margin-top: 3rem;
+	}
+
+	h3 {
+		margin-top: 8rem;
+	}
+
+	h4 {
+		margin-top: 3rem;
+
+		+ p {
+			margin-top: 1rem;
+		}
+	}
+
+	p {
+		text-wrap: balance;
+	}
+
+	ol,
+	ul {
+		list-style-type: square;
+	}
+
+	.pull-left {
+		display: flex;
+		float: left;
+		margin: 2rem;
+		margin-left: -20rem;
+	}
+
+	.pull-right {
+		display: flex;
+		float: right;
+		margin: 2rem;
+		margin-right: -20rem;
+	}
+}
+
+.page-section {
+	gap: 0 !important;
+	min-width: 60rem;
+	max-width: 80ch;
+
+	> * {
+		width: 100%;
+	}
+}

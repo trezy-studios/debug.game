@@ -1,5 +1,7 @@
 .footer {
 	align-items: center;
+	background-color: hsla(var(--palette-black-hsl), 0.5);
+	backdrop-filter: blur(2px);
 	bottom: 0;
 	display: flex;
 	justify-content: space-between;

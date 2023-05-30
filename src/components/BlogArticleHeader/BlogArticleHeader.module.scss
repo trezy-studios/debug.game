@@ -1,0 +1,46 @@
+.blog-article-header {
+	display: grid;
+	grid-template-areas:
+		'title title'
+		'subtitle author';
+	grid-template-columns: 1fr auto;
+}
+
+.author {
+	align-items: flex-start;
+	display: flex;
+	font-size: 0.7em;
+	grid-area: author;
+	text-align: right;
+}
+
+.subtitle {
+	font-weight: bold;
+	grid-area: subtitle;
+}
+
+.title {
+	grid-area: title;
+	margin-bottom: 1rem;
+	padding-bottom: 0.6rem;
+	position: relative;
+
+	&:after,
+	&:before {
+		background-color: var(--palette-dark-grey);
+		content: '';
+		height: var(--pixel-size);
+		position: absolute;
+		top: 100%;
+	}
+
+	&:after {
+		left: -1rem;
+		right: 0;
+	}
+
+	&:before {
+		left: 50%;
+		width: 50vw;
+	}
+}

@@ -1,5 +1,11 @@
 /* eslint-env node */
 
+const withMDX = require('@next/mdx')
+
+
+
+
+
 /**
  * @typedef RedirectConfig
  * @property {string} source The route to be redirected
@@ -7,10 +13,8 @@
  * @property {boolean} permanent Whether this redirect should be a 307 (temp) or 308 (permanent)
  */
 
-module.exports = {
-	/**
-	 * @returns {RedirectConfig[]} An array of redirect configs.
-	 */
+/** @type {import('next').NextConfig} */
+const config = {
 	redirects() {
 		return [
 			{
@@ -30,4 +34,14 @@ module.exports = {
 			},
 		]
 	},
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 }
+
+module.exports = withMDX({
+  extension: /\.mdx?$/,
+  options: {
+    providerImportSource: "@mdx-js/react",
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+})(config)
