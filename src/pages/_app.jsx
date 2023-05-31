@@ -5,6 +5,7 @@ import {
 	event as trackEvent,
 	GoogleAnalytics,
 } from 'nextjs-google-analytics'
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 import { config as fontAwesomeConfig } from '@fortawesome/fontawesome-svg-core'
 import NextHead from 'next/head.js'
 import { MDXProvider } from '@mdx-js/react'
@@ -72,6 +73,8 @@ export default function App(props) {
 				{...pageProps} />
 
 			<Footer />
+
+			<VercelAnalytics />
 		</MDXProvider>
 	)
 }
