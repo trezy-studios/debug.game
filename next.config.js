@@ -18,6 +18,11 @@ const config = {
 	redirects() {
 		return [
 			{
+				source: '/discord',
+				destination: 'https://trezy.studio/discord',
+				permanent: false,
+			},
+			{
 				source: '/humble-bundle',
 				destination: 'https://humblebundle.com/g/debug',
 				permanent: false,
